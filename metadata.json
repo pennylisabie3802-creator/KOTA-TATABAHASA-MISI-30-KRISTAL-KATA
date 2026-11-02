@@ -1,0 +1,6 @@
+{
+  "name": "Kota Tatabahasa: Misi 30 Kristal Kata",
+  "description": "Permainan RPG pendidikan pixel art 2D interaktif untuk menguasai tatabahasa bahasa Melayu melalui pengembaraan tiga misi dan pengumpulan 30 Kristal Kata.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

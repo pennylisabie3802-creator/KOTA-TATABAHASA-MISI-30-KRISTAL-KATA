@@ -1,0 +1,847 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-pixel: 'Pixelify Sans', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    overscroll-behavior: none;
+  }
+}
+
+.app-viewport-shell {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.safe-area-x {
+  padding-left: max(0.375rem, env(safe-area-inset-left, 0px));
+  padding-right: max(0.375rem, env(safe-area-inset-right, 0px));
+}
+
+.mobile-stage-backdrop {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(91, 62, 168, 0.36) 0%, rgba(26, 16, 58, 0.88) 62%, #0d0a1f 100%);
+}
+
+@keyframes phone-rotate-hint {
+  0%,
+  18% {
+    transform: rotate(0deg);
+  }
+  52%,
+  84% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.phone-rotate-anim {
+  animation: phone-rotate-hint 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-rotate-anim {
+    animation: none !important;
+    transform: rotate(-90deg);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.font-pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.02em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Crisp Pixel Art Frames & Buttons */
+.pixel-panel-purple {
+  background-color: #2b1d52;
+  border: 4px solid #f6c445;
+  box-shadow:
+    inset 0 0 0 3px #5b3ea8,
+    0 6px 0 #150d2e,
+    0 8px 18px rgba(0, 0, 0, 0.55);
+}
+
+.pixel-panel-parchment {
+  background-color: #fff8e7;
+  color: #2d1e12;
+  border: 4px solid #7c4a21;
+  box-shadow:
+    inset 0 0 0 3px #e8d3a9,
+    0 6px 0 #43250d,
+    0 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.pixel-panel-wood {
+  background-color: #6f4222;
+  color: #fff8e7;
+  border: 4px solid #3c210e;
+  box-shadow:
+    inset 0 0 0 3px #9c6234,
+    0 5px 0 #261408;
+}
+
+.pixel-btn-gold {
+  background: linear-gradient(180deg, #ffe36e 0%, #f5b82e 65%, #d99014 100%);
+  color: #261505;
+  border: 3px solid #4a2806;
+  box-shadow:
+    inset 0 3px 0 #fff5b8,
+    inset 0 -3px 0 #b46e09,
+    0 4px 0 #3a1d04;
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), filter 120ms ease;
+}
+.pixel-btn-gold:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+.pixel-btn-gold:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 0 #fff5b8,
+    0 1px 0 #3a1d04;
+}
+
+.pixel-btn-purple {
+  background: linear-gradient(180deg, #8b5cf6 0%, #6d28d9 70%, #5b21b6 100%);
+  color: #fff8e7;
+  border: 3px solid #f6c445;
+  box-shadow:
+    inset 0 3px 0 #a78bfa,
+    inset 0 -3px 0 #4c1d95,
+    0 4px 0 #230f4b;
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), filter 120ms ease;
+}
+.pixel-btn-purple:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.pixel-btn-purple:active:not(:disabled) {
+  transform: translateY(2px);
+}
+
+.pixel-btn-blue {
+  background: linear-gradient(180deg, #38bdf8 0%, #0284c7 70%, #0369a1 100%);
+  color: #fff8e7;
+  border: 3px solid #f6c445;
+  box-shadow:
+    inset 0 3px 0 #7dd3fc,
+    inset 0 -3px 0 #075985,
+    0 4px 0 #082f49;
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), filter 120ms ease;
+}
+.pixel-btn-blue:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.pixel-btn-blue:active:not(:disabled) {
+  transform: translateY(2px);
+}
+
+.pixel-btn-wood {
+  background: linear-gradient(180deg, #d98a3c 0%, #b46521 70%, #8f4b14 100%);
+  color: #fff8e7;
+  border: 3px solid #f6c445;
+  box-shadow:
+    inset 0 3px 0 #f3b36b,
+    inset 0 -3px 0 #6e370c,
+    0 4px 0 #381b05;
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), filter 120ms ease;
+}
+.pixel-btn-wood:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.pixel-btn-wood:active:not(:disabled) {
+  transform: translateY(2px);
+}
+
+.pixel-btn-emerald {
+  background: linear-gradient(180deg, #34d399 0%, #059669 70%, #047857 100%);
+  color: #fff8e7;
+  border: 3px solid #f6c445;
+  box-shadow:
+    inset 0 3px 0 #6ee7b7,
+    inset 0 -3px 0 #065f46,
+    0 4px 0 #022c22;
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), filter 120ms ease;
+}
+.pixel-btn-emerald:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.pixel-btn-emerald:active:not(:disabled) {
+  transform: translateY(2px);
+}
+
+/* Custom Scrollbar for Modals */
+.pixel-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.pixel-scroll::-webkit-scrollbar-track {
+  background: #231642;
+  border-left: 2px solid #4c3385;
+}
+.pixel-scroll::-webkit-scrollbar-thumb {
+  background: #f6c445;
+  border: 2px solid #4a2806;
+}
+
+/* ==========================================================================
+   Main Menu Interactive Hotspot Hover Glow & Light Shimmer
+   (100% transparent at rest; compositor-only opacity & transform on hover)
+   ========================================================================== */
+@keyframes menu-hotspot-breathe {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.012);
+  }
+}
+
+.menu-hotspot {
+  --hotspot-glow: rgba(253, 224, 71, 0.65);
+  --hotspot-border: rgba(254, 240, 138, 0.9);
+  --hotspot-tint: rgba(255, 251, 235, 0.12);
+  background: transparent;
+  overflow: visible;
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Luminous outer/inner halo layer (100% invisible at rest; unclipped radial aura on hover/focus) */
+.menu-hotspot::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at center,
+    var(--hotspot-tint) 0%,
+    rgba(255, 255, 255, 0.02) 72%,
+    transparent 100%
+  );
+  border: 2px solid var(--hotspot-border);
+  box-shadow:
+    0 0 14px var(--hotspot-glow),
+    0 0 28px var(--hotspot-glow),
+    inset 0 0 12px var(--hotspot-glow);
+  transition: opacity 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Clipped container for subtle diagonal light-sheen sweep */
+.menu-hotspot-shimmer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.menu-hotspot-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: 0;
+  width: 46%;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-16deg);
+  transition: transform 560ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 160ms ease-out;
+}
+
+.menu-hotspot:hover::before,
+.menu-hotspot:focus-visible::before {
+  opacity: 1;
+  animation: menu-hotspot-breathe 1.6s ease-in-out infinite;
+}
+
+.menu-hotspot:hover .menu-hotspot-shimmer::after,
+.menu-hotspot:focus-visible .menu-hotspot-shimmer::after {
+  opacity: 1;
+  transform: translateX(320%) skewX(-16deg);
+}
+
+.menu-hotspot:active {
+  transform: scale(0.985);
+}
+
+/* Tactile Press Bounce & Gentle Micro-Shake Before Screen Transition */
+@keyframes menu-hotspot-press-bounce {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  28% {
+    transform: scale(0.945, 0.91) translateY(2.5px);
+  }
+  65% {
+    transform: scale(1.038, 1.05) translateY(-2.5px);
+  }
+  85% {
+    transform: scale(0.992, 0.995) translateY(0.5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes menu-stage-micro-bounce {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  28% {
+    transform: translate3d(0, 2px, 0) scale(0.9965);
+  }
+  65% {
+    transform: translate3d(0, -1.5px, 0) scale(1.002);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.menu-hotspot-pressed {
+  animation: menu-hotspot-press-bounce 185ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.menu-hotspot-pressed::before {
+  opacity: 1;
+  animation: none;
+}
+
+.menu-stage-bouncing {
+  animation: menu-stage-micro-bounce 185ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Palette-matched glow accents for each button on main-menu.png */
+.menu-hotspot-gold {
+  --hotspot-glow: rgba(250, 204, 21, 0.72);
+  --hotspot-border: rgba(254, 249, 195, 0.95);
+  --hotspot-tint: rgba(254, 240, 138, 0.14);
+}
+
+.menu-hotspot-purple {
+  --hotspot-glow: rgba(192, 132, 252, 0.7);
+  --hotspot-border: rgba(243, 232, 255, 0.92);
+  --hotspot-tint: rgba(216, 180, 254, 0.13);
+}
+
+.menu-hotspot-wood {
+  --hotspot-glow: rgba(251, 191, 36, 0.68);
+  --hotspot-border: rgba(254, 243, 199, 0.92);
+  --hotspot-tint: rgba(253, 230, 138, 0.13);
+}
+
+.menu-hotspot-blue {
+  --hotspot-glow: rgba(56, 189, 248, 0.72);
+  --hotspot-border: rgba(224, 242, 254, 0.95);
+  --hotspot-tint: rgba(125, 211, 252, 0.14);
+}
+
+.menu-hotspot-icon {
+  --hotspot-glow: rgba(253, 224, 71, 0.72);
+  --hotspot-border: rgba(254, 240, 138, 0.95);
+  --hotspot-tint: rgba(254, 249, 195, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-hotspot,
+  .menu-hotspot::before,
+  .menu-hotspot-shimmer::after,
+  .menu-hotspot-pressed,
+  .menu-stage-bouncing {
+    transition: none;
+    animation: none;
+  }
+  .menu-hotspot:hover .menu-hotspot-shimmer::after,
+  .menu-hotspot:focus-visible .menu-hotspot-shimmer::after {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   OFFICIAL GAME LOGO ANIMATIONS (logo-kota-tatabahasa — Section 10)
+   Whole-element CSS transforms/opacity only; zero internal mascot distortion
+   ========================================================================== */
+
+@keyframes game-logo-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes game-logo-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes game-logo-soft-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(250, 204, 21, 0.45),
+      0 0 24px rgba(56, 189, 248, 0.35);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(253, 224, 71, 0.8),
+      0 0 38px rgba(96, 165, 250, 0.55);
+  }
+}
+
+@keyframes game-logo-sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+.logo-anim-fade-in {
+  animation: game-logo-fade-in 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.logo-anim-float {
+  animation: game-logo-float 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.logo-anim-glow {
+  animation: game-logo-soft-glow 2.8s ease-in-out infinite;
+}
+
+.logo-sparkle-star {
+  animation: game-logo-sparkle-twinkle 1.9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-anim-fade-in,
+  .logo-anim-float,
+  .logo-anim-glow,
+  .logo-sparkle-star {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   MAIN MENU PROFESSIONAL 2D PIXEL-ART ANIMATION SYSTEM
+   Compositor-only (transform & opacity) for smooth 60fps desktop & mobile
+   ========================================================================== */
+
+/* 1. Title Emblem Entrance (800ms fade-in + scale-in + soft bounce) */
+@keyframes menu-title-entrance {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -14px, 0) scale(0.9);
+  }
+  65% {
+    opacity: 1;
+    transform: translate3d(0, 3px, 0) scale(1.028);
+  }
+  84% {
+    opacity: 1;
+    transform: translate3d(0, -1.5px, 0) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.menu-title-enter {
+  animation: menu-title-entrance 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+/* 2. Staggered Menu Button Slide-In from Right + Fade-In + Soft Bounce (520ms) */
+@keyframes menu-btn-slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translate3d(38px, 0, 0) scale(0.96);
+  }
+  68% {
+    opacity: 1;
+    transform: translate3d(-4px, 0, 0) scale(1.015);
+  }
+  86% {
+    opacity: 1;
+    transform: translate3d(1.5px, 0, 0) scale(0.998);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.menu-btn-enter {
+  opacity: 0;
+  animation: menu-btn-slide-in-right 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* 3. MULA PENGEMBARAAN Idle Float (3px, 2.5s) & Pulsing Play Icon */
+@keyframes menu-mula-idle-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -3px, 0);
+  }
+}
+
+@keyframes menu-play-icon-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.menu-mula-float {
+  animation: menu-mula-idle-float 2.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.menu-play-pulse {
+  animation: menu-play-icon-pulse 1.8s ease-in-out infinite;
+}
+
+/* 4. Button Glow Aura Layers (opacity-animated only — zero repaint cost!) */
+@keyframes menu-aura-pulse {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}
+
+.menu-aura-gold {
+  box-shadow:
+    0 0 14px rgba(250, 204, 21, 0.75),
+    0 0 28px rgba(245, 158, 11, 0.45);
+  animation: menu-aura-pulse 2.5s ease-in-out infinite;
+}
+
+.menu-aura-purple {
+  box-shadow:
+    0 0 12px rgba(192, 132, 252, 0.72),
+    0 0 24px rgba(139, 92, 246, 0.4);
+  animation: menu-aura-pulse 2.8s ease-in-out infinite;
+}
+
+.menu-aura-wood {
+  box-shadow:
+    0 0 10px rgba(251, 191, 36, 0.55),
+    0 0 20px rgba(217, 119, 6, 0.32);
+  animation: menu-aura-pulse 3.2s ease-in-out infinite;
+}
+
+.menu-aura-blue {
+  box-shadow:
+    0 0 12px rgba(56, 189, 248, 0.72),
+    0 0 24px rgba(14, 165, 233, 0.42);
+  animation: menu-aura-pulse 2.7s ease-in-out infinite;
+}
+
+/* 5. Subtle Frame Sheen Glint & Moving Border Light */
+@keyframes menu-glint-sweep {
+  0%,
+  72% {
+    transform: translate3d(-160%, 0, 0) skewX(-18deg);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(280%, 0, 0) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+.menu-idle-glint {
+  animation: menu-glint-sweep 4.6s ease-in-out infinite;
+}
+
+.menu-blue-border-sweep {
+  animation: menu-glint-sweep 3.8s linear infinite;
+}
+
+/* 6. Button Click Scale 95% -> 100% + Sparkle Flash */
+@keyframes menu-btn-click-pop {
+  0% {
+    transform: scale(1);
+  }
+  38% {
+    transform: scale(0.95);
+  }
+  78% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.menu-btn-clicking {
+  animation: menu-btn-click-pop 280ms cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+@keyframes menu-click-sparkle-flash {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  35% {
+    opacity: 0.95;
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.16);
+  }
+}
+
+.menu-click-flash {
+  animation: menu-click-sparkle-flash 380ms ease-out forwards;
+}
+
+/* 7. Sub-icon micro-animations on BAHAN PEMBELAJARAN, INVENTORI, PETA KOTA */
+@keyframes menu-book-icon-flutter {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -1.5px, 0) rotate(-2deg);
+  }
+}
+
+@keyframes menu-pin-icon-pulse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -2px, 0) scale(1.08);
+  }
+}
+
+.menu-book-idle {
+  animation: menu-book-icon-flutter 2.6s ease-in-out infinite;
+}
+
+.menu-pin-idle {
+  animation: menu-pin-icon-pulse 2.2s ease-in-out infinite;
+}
+
+/* 8. Ambient Background Layers (Waterfall, Clouds, Stars, Crystal Glow, Petals) */
+@keyframes ambient-waterfall-flow {
+  0% {
+    transform: translate3d(0, -18%, 0);
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(0, 26%, 0);
+    opacity: 0.35;
+  }
+}
+
+.ambient-waterfall-stream {
+  animation: ambient-waterfall-flow 1.4s linear infinite;
+}
+
+@keyframes ambient-cloud-drift {
+  0% {
+    transform: translate3d(-12%, 0, 0);
+  }
+  100% {
+    transform: translate3d(118%, 0, 0);
+  }
+}
+
+.ambient-cloud-slow {
+  animation: ambient-cloud-drift 46s linear infinite;
+}
+
+.ambient-cloud-slower {
+  animation: ambient-cloud-drift 64s linear infinite;
+}
+
+@keyframes ambient-petal-fall {
+  0% {
+    transform: translate3d(0, -10px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(34px, 145px, 0) rotate(120deg);
+    opacity: 0;
+  }
+}
+
+.ambient-petal {
+  animation: ambient-petal-fall 7.5s ease-in-out infinite;
+}
+
+/* 9. Srikandi Magic Book Particles */
+@keyframes menu-magic-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0) scale(0.7);
+  }
+  35% {
+    opacity: 1;
+    transform: translate3d(-3px, -6px, 0) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(4px, -22px, 0) scale(0.6);
+  }
+}
+
+.menu-magic-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  box-shadow: 0 0 6px currentColor;
+  animation: menu-magic-rise 1.15s ease-out infinite;
+}
+.menu-magic-p1 { left: 56%; top: 44%; animation-delay: 0ms; }
+.menu-magic-p2 { left: 68%; top: 48%; animation-delay: 220ms; }
+.menu-magic-p3 { left: 48%; top: 52%; animation-delay: 440ms; }
+.menu-magic-p4 { left: 74%; top: 38%; animation-delay: 140ms; }
+.menu-magic-p5 { left: 60%; top: 34%; animation-delay: 340ms; }
+
+/* 10. Reduced Motion Accessibility Compliance */
+@media (prefers-reduced-motion: reduce) {
+  .menu-title-enter,
+  .menu-btn-enter,
+  .menu-mula-float,
+  .menu-play-pulse,
+  .menu-aura-gold,
+  .menu-aura-purple,
+  .menu-aura-wood,
+  .menu-aura-blue,
+  .menu-idle-glint,
+  .menu-blue-border-sweep,
+  .menu-btn-clicking,
+  .menu-click-flash,
+  .menu-book-idle,
+  .menu-pin-idle,
+  .ambient-waterfall-stream,
+  .ambient-cloud-slow,
+  .ambient-cloud-slower,
+  .ambient-petal,
+  .menu-magic-particle {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   QUESTION IMAGE INTERACTIVE ZOOM & FULLSCREEN VIEWER
+   ========================================================================== */
+.zoom-viewport-surface {
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+
+.zoom-image-smooth-step {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-image-smooth-step {
+    transition: none !important;
+  }
+}
+
+
+
+
